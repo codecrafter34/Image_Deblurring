@@ -1,0 +1,29 @@
+# Configuration for Swin Transformer Deblur Baseline
+model:
+  name: "swin_deblur"
+  embed_dim: 48
+  window_size: 8
+
+dataset:
+  patch_size: 256
+  cutblur_prob: 0.5
+  num_workers: 4
+
+training:
+  batch_size: 8
+  lr: 2.0e-4
+  min_lr: 1.0e-6
+  weight_decay: 1.0e-4
+  epochs: 100
+  max_grad_norm: 1.0
+  amp: true
+
+loss:
+  lambda_char: 1.0
+  lambda_perc: 0.1
+  lambda_fft: 0.05
+  char_eps: 1.0e-3
+
+checkpoint:
+  checkpoint_dir: "checkpoints_swin"
+  samples_dir: "samples_swin"

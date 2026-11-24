@@ -1,0 +1,43 @@
+# Configuration for Real-World Image Deblurring
+# Attention-Augmented U-Net Architecture
+
+model:
+  name: "attention_unet"
+  base_channels: 32
+  use_residual: true
+  attention_in_skips: true
+  attention_in_bottleneck: true
+
+dataset:
+  data_root: null                 # Path to real dataset (e.g. Kaggle Real-World Deblurring / GoPro)
+  train_blur_dir: null
+  train_sharp_dir: null
+  val_blur_dir: null
+  val_sharp_dir: null
+  patch_size: 256
+  cutblur_prob: 0.5
+  cutblur_ratio_range: [0.2, 0.8]
+  num_workers: 4
+
+training:
+  batch_size: 16
+  lr: 2.0e-4
+  min_lr: 1.0e-6
+  weight_decay: 1.0e-4
+  epochs: 100
+  max_grad_norm: 1.0
+  amp: true
+  device: "cuda"
+
+loss:
+  lambda_char: 1.0
+  lambda_perc: 0.1
+  lambda_fft: 0.05
+  char_eps: 1.0e-3
+  use_vgg: true
+
+checkpoint:
+  checkpoint_dir: "checkpoints"
+  samples_dir: "samples"
+  val_interval: 1
+  save_interval: 5
