@@ -213,3 +213,6 @@ Run all unit verification tests:
 python -m unittest tests/test_pipeline.py
 ```
 Outputs: `Ran 14 tests in 0.469s - OK`.
+
+License:
+Made By Saksham and Nityam
